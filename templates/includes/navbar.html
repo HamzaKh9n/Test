@@ -1,0 +1,27 @@
+
+
+<div class="nav bg-dark" style="width: 100%;height: 100px;display: flex;align-items: center;justify-content: space-around;top: 0;">
+    <h4 class="text-danger" style="text-transform: uppercase;">BlogJi<span style="text-transform: lowercase;" class="text-success">.com</span></h4>
+</div>
+<div class="bg-secondary" style="width: 100%;height: 50px;position: relative;">
+    <div id="show" style="width: 100%;height: 100%;color: white;display: none;align-items: center;justify-content: center;overflow: hidden;"><button class="btn btn-danger h-80" id="btn"><i class="fa-solid fa-bars"></i></button></div>
+    <div style="width: 100%;height: 100%;display: flex;position: absolute;align-items: center;justify-content: space-evenly;" id="hidden-div">
+        <a href="/bform/" class="btn btn-danger" style="text-transform: uppercase;"><i class="fa-solid fa-pen"></i>Create Blog</a>
+        <form action="" method="post" style="display: flex;">
+            {% csrf_token %}
+            <input type="search" name="search" id="" placeholder="Search" class="form-control" style="display: inline;">
+            <button type="submit" class="btn btn-danger" style="display: inline;"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <a href="/out/" class="btn btn-danger" style="text-transform: uppercase;"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+</div>
+
+<script>
+    let btn = document.getElementById('btn');
+    btn.addEventListener('click' , ()=>{
+        let show  = document.getElementById('show');
+        show.style.display ='none'
+        let hidden_div  = document.getElementById('hidden-div');
+        hidden_div.style.display ='flex'
+    })
+</script>

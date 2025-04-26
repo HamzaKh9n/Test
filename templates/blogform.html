@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="box" style="width: 100%;min-height: 100vh;">    
+    <form action="" method="post" style="width: 100%;height: 100%;" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="bg-dark" style="width: 100%;color: white;padding: 20px;">
+            <h4 class="text-danger" style="display: inline;">Blog Details:</h4><hr>
+            <div class="details" style="display: flex;justify-content: space-between;">
+                <input type="text" class="form-control" placeholder="Blog Name" style="width: 20%;margin-right: 10px;" required autocomplete="off" name="name">
+                <input type="text" class="form-control" placeholder="Blog Title" style="width: 20%;margin-right: 10px;" required autocomplete="off" name="title">
+                <div type="text" class="form-control"  placeholder="" style="width: 20%;margin-right: 10px;text-transform: uppercase;">Blog By : {{request.user}}</div>
+                <button class="btn btn-danger" style="margin-bottom: 20px;" type="submit"><i class="fa-solid fa-upload"></i> Upload Blog</button>
+            </div>
+        </div>
+        <label for="image" style="width: 100%;">
+            <div class="" style="width: 100%;border: 1px solid black;cursor: pointer;padding: 50px;text-align: center;">
+                <img src="#" alt="Your image" id="pic" >
+            </div>
+        </label>
+        <input type="file" style="display: none;" class="form-control" name="img" id="image">
+        <textarea name="text" id="" style="width: 100%;height: 100vh;color: white;padding: 20px;margin: 0px;" class="bg-dark" value="Enter Your Blog Content Here">Type Your Blog Content Here.....</textarea>
+    </form>
+</div>
+
+
+<script>
+
+    let inp = document.getElementById('image');
+    inp.addEventListener('change' , ()=>{
+        let files = inp.files
+        if (files){
+            let image = document.getElementById('pic');
+            image.setAttribute('src' , URL.createObjectURL(event.target.files[0]))
+            console.log('set' , URL.createObjectURL(event.target.files[0]))
+        }
+    })
+
+</script>
+
+{% endblock %}
